@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Vibration, Dimensions, BackHandler } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Vibration, Dimensions, BackHandler, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { RNCamera } from 'react-native-camera';
 
@@ -7,7 +7,7 @@ const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
 const URI = 'http://192.168.0.4:3000/api';
-
+const logo = require('../asset/vsii1.png');
 
 class Scan extends Component {
     constructor(props) {
@@ -31,10 +31,10 @@ class Scan extends Component {
         } else {
             BackHandler.exitApp();
         }
-      
+
         return true;
     }
-    
+
 
     onBarCodeRead = (e) => {
         this.setState({ qrcode: e.data });
@@ -68,8 +68,8 @@ class Scan extends Component {
     render() {
         const { scanning } = this.state;
         return (
-            <View style={{ flex: 1 }}>
-                <View style={{ backgroundColor: '#27ae60', height: 50, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ flex: 1, backgroundColor: 'white'}}>
+                <View style={styles.header}>
                     {
                         scanning &&
                         <TouchableOpacity
@@ -80,8 +80,8 @@ class Scan extends Component {
                             <Icon name='arrow-left' style={{ fontSize: 26, color: '#ffff', }} />
                         </TouchableOpacity>
                     }
-                   
-                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>VI-TRACING</Text>
+
+                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>VI-TRACING</Text>
                 </View>
                 {
                     scanning ?
@@ -112,7 +112,7 @@ class Scan extends Component {
 
                         </View>
                         :
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',  }}>        
                             <TouchableOpacity
                                 onPress={() => this.setState({ scanning: true })}
                                 style={{
@@ -141,6 +141,13 @@ export default Scan;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    header: {
+        backgroundColor: '#27ae60', 
+        height: deviceHeight * 0.08, 
+        alignItems: 'center', 
+        flexDirection: 'row', 
+        justifyContent: 'center'
     },
     preview: {
         flex: 1,

@@ -11,12 +11,14 @@ import { Platform, StyleSheet, Text, View, Easing, Animated} from 'react-native'
 import { createStackNavigator } from 'react-navigation';
 import Scan from './src/components/Scan';
 import ProductDetail from './src/components/ProductDetail'
+import LoadingScreen from './src/components/LoadingScreen';
 
 const AppStack = createStackNavigator({
   Scan,
-  ProductDetail
+  ProductDetail,
+  LoadingScreen
 }, {
-    initialRouteName: 'Scan',
+    initialRouteName: 'LoadingScreen',
     navigationOptions: {
       header: null
     },

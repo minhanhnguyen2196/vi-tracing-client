@@ -6,7 +6,7 @@ import { RNCamera } from 'react-native-camera';
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
-const URI = 'http://192.168.0.4:3000/api';
+const URI = 'http://118.70.170.165:3001/api';
 const logo = require('../asset/vsii1.png');
 
 class Scan extends Component {
@@ -54,7 +54,7 @@ class Scan extends Component {
                 .then(res => res.json())
                 .then(resJson => {
                     if (resJson.error || !resJson.retailer || !resJson.verifier) {
-                        alert('Invalid QR Code')
+                        alert('QR Code not available')
                         return Promise.reject(new Error('Fail!'));
                     } else {
                         this.props.navigation.navigate('ProductDetail', { product: resJson })

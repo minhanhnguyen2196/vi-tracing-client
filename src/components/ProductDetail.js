@@ -46,23 +46,23 @@ class ProductDetail extends Component {
                     source={apple} />
 
                 <View style={{ margin: 10 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>ORIGIN</Text>
                         <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{product.farmer.org.name}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>VERIFIER</Text>
                         <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{product.verifier.org.name}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>RETAILER</Text>
                         <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{product.retailer.org.name}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>PACKED DATE</Text>
                         <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{moment(product.packedDateTime).format('MMM DD YYYY')}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>EXPIRED DATE</Text>
                         <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{moment(product.expiredDateTime).format('MMM DD YYYY')}</Text>
                     </View>

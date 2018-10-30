@@ -37,7 +37,6 @@ class Scan extends Component {
 
 
     onBarCodeRead = (e) => {
-        this.setState({ qrcode: e.data });
         this.setState({ scanning: false }, () => {
             const url = URI + '/Shipment/' + e.data;
             const data = { filter: '{"include":"resolve"}' };
@@ -55,7 +54,7 @@ class Scan extends Component {
                 .then(resJson => {
                     if (resJson.error || !resJson.retailer || !resJson.verifier) {
                         alert('QR Code not available')
-                        return Promise.reject(new Error('Fail!'));
+                        return Promise.reject(new Error());
                     } else {
                         this.props.navigation.navigate('ProductDetail', { product: resJson })
                     }
@@ -68,13 +67,13 @@ class Scan extends Component {
     render() {
         const { scanning } = this.state;
         return (
-            <View style={{ flex: 1, backgroundColor: 'white'}}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={styles.header}>
                     {
                         scanning &&
                         <TouchableOpacity
                             hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
-                            style={{ paddingLeft: 10, alignItems: 'center', position: 'absolute', left: 10, top: 10 }}
+                            style={{ padding: 10, alignItems: 'center', position: 'absolute', left: 10, top: 10, bottom: 10, justifyContent: 'center' }}
                             onPress={() => this.setState({ scanning: false })}
                         >
                             <Icon name='arrow-left' style={{ fontSize: 26, color: '#ffff', }} />
@@ -112,7 +111,7 @@ class Scan extends Component {
 
                         </View>
                         :
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',  }}>        
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
                             <TouchableOpacity
                                 onPress={() => this.setState({ scanning: true })}
                                 style={{
@@ -143,10 +142,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        backgroundColor: '#27ae60', 
-        height: deviceHeight * 0.08, 
-        alignItems: 'center', 
-        flexDirection: 'row', 
+        backgroundColor: '#27ae60',
+        height: 80,
+        alignItems: 'center',
+        flexDirection: 'row',
         justifyContent: 'center'
     },
     preview: {
@@ -177,10 +176,10 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         position: 'absolute',
-        borderLeftColor: 'rgba(0, 0, 0, .3)',
-        borderRightColor: 'rgba(0, 0, 0, .3)',
-        borderTopColor: 'rgba(0, 0, 0, .3)',
-        borderBottomColor: 'rgba(0, 0, 0, .3)',
+        borderLeftColor: 'rgba(0, 0, 0, .1)',
+        borderRightColor: 'rgba(0, 0, 0, .1)',
+        borderTopColor: 'rgba(0, 0, 0, .1)',
+        borderBottomColor: 'rgba(0, 0, 0, .1)',
         borderLeftWidth: deviceWidth / 1,
         borderRightWidth: deviceWidth / 1,
         borderTopWidth: deviceHeight / 5,

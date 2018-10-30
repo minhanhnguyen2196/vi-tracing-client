@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, BackHandler } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, BackHandler, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 var moment = require('moment');
 const apple = require('../asset/apple.jpg');
+const { height } = Dimensions.get('window');
 class ProductDetail extends Component {
     constructor(props) {
         super(props);
@@ -22,19 +23,19 @@ class ProductDetail extends Component {
     }
     render() {
         const { navigation } = this.props;
-        const product= navigation.getParam('product');
+        const product = navigation.getParam('product');
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ backgroundColor: '#27ae60', height: 50, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+                <View style={{ backgroundColor: '#27ae60', height: 80, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
                     <TouchableOpacity
-                        hitSlop={{ top: 20, bottom: 20, left: 20, right: 20}}
-                        style={{ paddingLeft: 10, alignItems: 'center', position: 'absolute', left: 10, top: 10 }}
+                        hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+                        style={{ padding: 10, alignItems: 'center', position: 'absolute', left: 10, top: 10, bottom: 10, justifyContent: 'center' }}
                         onPress={() => this.props.navigation.goBack()}
                     >
                         <Icon name='arrow-left' style={{ fontSize: 26, color: '#ffff', }} />
                     </TouchableOpacity>
-                    <View style={{ flex: 1,  flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>VI-TRACING</Text>
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>VI-TRACING</Text>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', margin: 20 }}>
@@ -48,15 +49,23 @@ class ProductDetail extends Component {
                 <View style={{ margin: 10 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>ORIGIN</Text>
-                        <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{product.farmer.org.name}</Text>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.props.navigation.navigate('FarmerOrg', { farmer: product.farmer })}>
+                            <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d', }}>{product.farmer.org.name}</Text>
+                        </TouchableOpacity>
+
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>VERIFIER</Text>
-                        <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{product.verifier.org.name}</Text>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.props.navigation.navigate('VerifierOrg', { verifier: product.verifier })}>
+                            <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d', }}>{[...new Set(product.verifier.map(verifier => { return verifier.org.name }))].join(", ")}</Text>
+                        </TouchableOpacity>
+
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>RETAILER</Text>
-                        <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d' }}>{product.retailer.org.name}</Text>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.props.navigation.navigate('RetailerOrg', { retailer: product.retailer })}>
+                            <Text style={{ flex: 1, fontSize: 16, color: '#7f8c8d', }}>{[...new Set(product.retailer.map(retailer => { return retailer.org.name }))].join(", ")}</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', padding: 8 }}>
                         <Text style={{ flex: 1.5, fontWeight: 'bold', color: '#262A35', fontSize: 16 }}>PACKED DATE</Text>

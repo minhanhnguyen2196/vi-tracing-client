@@ -7,16 +7,22 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Easing, Animated} from 'react-native';
+import { Platform, StyleSheet, Text, View, Easing, Animated } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Scan from './src/components/Scan';
 import ProductDetail from './src/components/ProductDetail'
 import LoadingScreen from './src/components/LoadingScreen';
+import FarmerOrg from './src/components/FarmerOrg';
+import VerifierOrg from './src/components/VerifierOrg';
+import RetailerOrg from './src/components/RetailerOrg';
 
 const AppStack = createStackNavigator({
   Scan,
   ProductDetail,
-  LoadingScreen
+  LoadingScreen,
+  FarmerOrg,
+  RetailerOrg,
+  VerifierOrg
 }, {
     initialRouteName: 'LoadingScreen',
     navigationOptions: {

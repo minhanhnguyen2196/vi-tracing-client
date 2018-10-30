@@ -16,13 +16,7 @@ class LoadingScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-                <View>
-                    <Image source={logo} />
-                </View>
-                <ActivityIndicator
-                    style={{ paddingTop: 20 }}
-                    color='green' animating size={50}
-                />
+                <Image source={logo} />
             </View>
         );
     }
